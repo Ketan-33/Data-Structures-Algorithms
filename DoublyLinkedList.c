@@ -13,7 +13,7 @@ void create()
 {
     if (Head == NULL)
     {
-        printf("Enter Head Element: ");
+        printf("-->Enter Head Element: ");
         Head = (struct Dnode *)malloc(sizeof(struct Dnode));
         scanf("%d", &Head->data);
         Head->prev = NULL;
@@ -21,7 +21,7 @@ void create()
     }
     else
     {
-        printf("List Exists\n");
+        printf("**List Exists**\n");
     }
 }
 
@@ -44,7 +44,7 @@ void append(int ele)
 
     if (Head == NULL)
     {
-        printf("Calling create function\n");
+        printf("**Calling create function**\n");
         create();
     }
     else
@@ -79,7 +79,7 @@ void insert_between(int element, int position)
 
     if (temp == NULL)
     {
-        printf("Invalid position for insertion.\n");
+        printf("**Invalid position for insertion.**\n");
     }
     else
     {
@@ -145,7 +145,7 @@ void delete_between(int position)
 {
     if (Head == NULL)
     {
-        printf("List is empty\n");
+        printf("**List is empty**\n");
         return;
     }
 
@@ -165,7 +165,7 @@ void delete_between(int position)
 
     if (temp == NULL)
     {
-        printf("Invalid position\n");
+        printf("**Invalid position**\n");
     }
     else
     {
@@ -179,11 +179,29 @@ void delete_between(int position)
     }
 }
 
+void search(int element)
+{
+    struct Dnode *t;
+    t = Head;
+    int count = 0;
+    while (t != NULL)
+    {
+        count++;
+        if (t->data == element)
+        {
+            printf("-->Element found at node %d\n", count);
+            return;
+        }
+        t = t->next;
+    }
+    printf("**No element found**\n");
+}
+
 int main()
 {
     int element, choice, position;
     create();
-    while (choice != 8)
+    while (choice != 9)
     {
         printf("1. Append\n");
         printf("2. Insert begin\n");
@@ -192,26 +210,27 @@ int main()
         printf("5. Delete Head\n");
         printf("6. Delete end\n");
         printf("7. Delete between\n");
-        printf("8. To terminate\n");
-        printf("Enter your choice: ");
+        printf("8. Search\n");
+        printf("9. To terminate\n");
+        printf("-->Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice)
         {
         case 1:
-            printf("Enter element to append: ");
+            printf("-->Enter element to append: ");
             scanf("%d", &element);
             append(element);
             break;
         case 2:
-            printf("Enter New Head: ");
+            printf("-->Enter New Head: ");
             scanf("%d", &element);
             insert_begin(element);
             break;
         case 3:
-            printf("Enter element to insert: ");
+            printf("-->Enter element to insert: ");
             scanf("%d", &element);
-            printf("Enter position: ");
+            printf("-->Enter position: ");
             scanf("%d", &position);
             insert_between(element, position);
             break;
@@ -226,11 +245,16 @@ int main()
             delete_end();
             break;
         case 7:
-            printf("Enter position:");
+            printf("-->Enter position:");
             scanf("%d", &position);
             delete_between(position);
             break;
         case 8:
+            printf("-->Enter element to find:");
+            scanf("%d", &element);
+            search(element);
+            break;
+        case 9:
             printf("** Terminating program **.\n");
             break;
         default:
