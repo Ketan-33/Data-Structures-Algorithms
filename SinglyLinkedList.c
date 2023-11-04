@@ -42,7 +42,7 @@ void append(int ele)
 
     if (Head == NULL)
     {
-        printf("**Calling create function**\n");
+        printf("***Calling create function***\n");
         create();
     }
     else
@@ -56,7 +56,7 @@ void append(int ele)
         temp->data = ele;
         temp->Next = NULL;
         temp1->Next = temp;
-        printf("**Element appended**\n");
+        printf("***Element appended***\n");
     }
 }
 
@@ -85,17 +85,17 @@ void insert_between(int element, int position)
         temp=temp->Next;
         prev->Next = newnode;
         newnode->Next = temp;
-        printf("**Element Inserted**\n");
+        printf("***Element Inserted***\n");
     }
     if (count == position)
     {
         prev->Next = newnode;
         newnode->Next = temp;
-        printf("**Element Inserted**\n");
+        printf("***Element Inserted***\n");
     }
     else
     {
-        printf("**Invalid position for insertion.**\n");
+        printf("***Invalid position for insertion.***\n");
     }
 }
 
@@ -104,7 +104,7 @@ void traverse()
     struct node *t;
     t = Head;
     if(Head==NULL){
-        printf("**List empty**\n");
+        printf("***List empty***\n");
     }
     while (t != NULL)
     {
@@ -121,7 +121,7 @@ int delete_head(){
     Head = Head->Next;
     data=temp->data;
     free(temp);
-    printf("**Head Deleted**\n");
+    printf("***Head Deleted***\n");
     return data;
 }
 
@@ -137,7 +137,7 @@ int delete_end(){
     prev->Next = NULL;
     data=temp->data;
     free(temp);
-    printf("**Last Element deleted %d**\n",data);
+    printf("***Last Element deleted %d***\n",data);
     return data;
 }
 
@@ -146,7 +146,7 @@ int delete_between(int position)
     int data;
     if (Head == NULL)
     {
-        printf("**List is empty**\n");
+        printf("***List is empty***\n");
         return -1;
     }
 
@@ -157,7 +157,7 @@ int delete_between(int position)
         Head = Head->Next;
         data=temp->data;
         free(temp);
-        printf("**Element deleted**\n");
+        printf("***Element deleted***\n");
         return data;
     }
 
@@ -172,14 +172,14 @@ int delete_between(int position)
 
     if (temp == NULL)
     {
-        printf("**Invalid position**\n");
+        printf("***Invalid position***\n");
     }
     else
     {
         prev->Next = temp->Next;
         data=temp->data;
         free(temp);
-        printf("**Element deleted**\n");
+        printf("***Element deleted***\n");
         return data;
     }
 }
@@ -198,7 +198,7 @@ void search(int element)
         }
         t = t->Next;
     }
-    printf("**No element found**\n");
+    printf("***No element found***\n");
     
 }
 int main()
@@ -239,7 +239,7 @@ int main()
             insert_between(element, position);
             break;
         case 4:
-            printf(" ** Your Linked List **\n");
+            printf(" *** Your Linked List ***\n");
             traverse();
             break;
         case 5:
@@ -259,10 +259,10 @@ int main()
             search(element);
             break;    
         case 9:
-            printf("** Terminating program **.\n");
+            printf("*** Terminating program ***.\n");
             break;
         default:
-            printf("** Invalid choice **\n");
+            printf("*** Invalid choice ***\n");
             break;
         }
     }
