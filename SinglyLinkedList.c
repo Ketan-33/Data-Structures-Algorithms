@@ -19,7 +19,7 @@ void create()
     }
     else
     {
-        printf("**List Exists**\n");
+        printf("***List Exists***\n");
     }
 }
 
@@ -31,7 +31,7 @@ void insert_begin(int element)
     t->data = element;
     t->Next = Head;
     Head = t;
-    printf("**New Head added**\n");
+    printf("***New Head added***\n");
 }
 
 // Append element
