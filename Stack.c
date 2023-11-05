@@ -13,13 +13,13 @@ void push(struct STACK *s1, char element)
 {
     if (s1->top == max - 1)
     {
-        printf("Stack overflow\n");
+        printf("***Stack overflow***\n");
     }
     else
     {
         s1->top++;
         s1->S[s1->top] = element;
-        printf("%c pushed\n", element);
+        printf("-->%c pushed\n", element);
     }
 }
 
@@ -27,14 +27,14 @@ char pop(struct STACK *s1)
 {
     if (s1->top == -1)
     {
-        printf("Stack underflow\n");
+        printf("***Stack underflow***\n");
         return -1;
     }
     else
     {
         char ele = s1->S[s1->top];
         s1->top--;
-        printf("Popped element -> %c\n", ele);
+        printf("-->Popped element -> %c\n", ele);
         return ele;
     }
 }
@@ -43,12 +43,12 @@ int peek(struct STACK s1)
 {
     if (s1.top == -1)
     {
-        printf("Stack Empty\n");
+        printf("***Stack Empty***\n");
         return -1;
     }
     else
     {
-        printf("Top element is -> %c\n", s1.S[s1.top]);
+        printf("-->Top element is -> %c\n", s1.S[s1.top]);
         return s1.S[s1.top];
     }
 }
@@ -76,7 +76,7 @@ int main()
         switch (CHSE)
         {
         case 1:
-            printf("Enter character to push: ");
+            printf("-->Enter character to push: ");
             scanf(" %c", &a);
             push(&s1, a);
             break;
