@@ -23,7 +23,7 @@ void push(struct Stack *s1, int element)
 {
     if (s1->top == 20 - 1)
     {
-        printf("Stack overflow\n");
+        printf("***Stack overflow***\n");
     }
     else
     {
@@ -42,14 +42,14 @@ char pop(struct Stack *s1)
     }
     else
     {
-        printf("stack underflow");
+        printf("***Stack underflow***\n");
     }
 }
 char peek(struct Stack *s1)
 {
     if (s1->top == -1)
     {
-        printf("Stack Empty\n");
+        printf("***Stack Empty***\n");
         return -1;
     }
     else
@@ -106,7 +106,7 @@ void infixToPostfix(char *infix)
             }
             if (isEmpty(&stack) == 1 && peek(&stack) != '(')
             {
-                printf("Invalid expression\n");
+                printf("***Invalid expression***\n");
                 return;
             }
             else
@@ -133,7 +133,7 @@ void infixToPostfix(char *infix)
     }
     printf("\n");
 
-    printf("Postfix expression: ");
+    printf("-->Postfix expression: ");
     for (int i = 0; i < index; i++)
     {
         printf("%c", postfix[i]);
@@ -143,7 +143,7 @@ void infixToPostfix(char *infix)
 int main()
 {
     char infixExpression[20];
-    printf("Enter a infix expression: ");
+    printf("\n-->Enter a infix expression: ");
     scanf("%s", infixExpression);
     int open = 0, close = 0;
     for (int i = 0; i <= strlen(infixExpression); i++)
@@ -165,7 +165,7 @@ int main()
     }
     else
     {
-        printf("Invalid expression 2\n");
+        printf("***Invalid expression***\n");
         return 0;
     }
 }
