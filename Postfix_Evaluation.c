@@ -13,7 +13,7 @@ void push(struct Stack *s1, int element)
 {
     if (s1->top == 20 - 1)
     {
-        printf("Stack overflow\n");
+        printf("***Stack overflow***\n");
     }
     else
     {
@@ -30,7 +30,7 @@ int pop(struct Stack *s1)
         return result;
     }
     else{
-        printf("stack underflow");
+        printf("***Stack underflow***\n");
     }
 }
 
@@ -89,16 +89,16 @@ int evaluatePostfix(char *exp)
 int main()
 {
     char postfixExpression[100];
-    printf("Enter a postfix expression: ");
+    printf("-->Enter a postfix expression: ");
     scanf("%s", postfixExpression);
     int result = evaluatePostfix(postfixExpression);
     if (result != -1)
     {
-        printf("Result: %d\n", result);
+        printf("-->Result: %d\n", result);
     }
     else
     {
-        printf("Error: Invalid expression\n");
+        printf("***Error: Invalid expression***\n");
     }
     return 0;
 }
