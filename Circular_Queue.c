@@ -30,7 +30,7 @@ void Enqueue(struct Queue *Q,int element){
     }
 
     else if((Q->Rear+1)%max == Q->Front){
-        printf("**Queue Full**\n");
+        printf("***Queue Full***\n");
         flag=1;
     }
     else{
@@ -44,7 +44,7 @@ void Enqueue(struct Queue *Q,int element){
 
 int Dequeue(struct Queue *Q){
     if(Q->Front==-1 && Q->Rear==-1){
-        printf("**Queue Empty**\n");
+        printf("***Queue Empty***\n");
     }
     else if(Q->Front == Q->Rear){
         Q->Rear=Q->Front=-1;
@@ -63,7 +63,7 @@ int Front(struct Queue *Q){
 }
 
 int size_Que(){                     
-    printf("Size = %d",size);
+    printf("-->Size = %d",size);
 }
 int main(){
     struct Queue Q;
@@ -76,14 +76,14 @@ int main(){
         printf("3. Front\n");
         printf("4. Get Size of Queue\n");
         printf("5. Quit\n");
-        printf("Enter your choice: ");
+        printf("-->Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice)
         {
         case 1:
             if(flag!=1){
-            printf("****Enter data to enqueue: ");
+            printf("-->Enter data to enqueue: ");
             scanf("%d", &data);
             Enqueue(&Q, data);
             }
@@ -94,31 +94,31 @@ int main(){
         case 2:
             if (isEmpty(&Q)==0)
             {
-                printf("****Dequeued element: %d\n", Dequeue(&Q));
+                printf("-->Dequeued element: %d\n", Dequeue(&Q));
             }
             else
             {
-                printf("****Queue is empty. Cannot dequeue.\n");
+                printf("***Queue is empty. Cannot dequeue.***\n");
             }
             break;
         case 3:
             if (isEmpty(&Q)==0)
             {
-                printf("****Front element: %d\n", Front(&Q));
+                printf("-->Front element: %d\n", Front(&Q));
             }
             else
             {
-                printf("****Queue is empty. No front element.\n");
+                printf("***Queue is empty. No front element.***\n");
             }
             break;
         case 4:
             size_Que();
             break;
         case 5:
-            printf("**Exiting program**.\n");
+            printf("***Exiting program***.\n");
             break;
         default:
-            printf("**Invalid choice.**\n");
+            printf("***Invalid choice.***\n");
             break;
         }
     } while (choice != 6);
