@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 int partition(int arr[], int low, int high) {
     int pivot = arr[high];
@@ -29,4 +30,35 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
+}
+
+int main()
+{
+    int arr_size;
+    
+    printf("Enter the size of the array: ");
+    scanf("%d", &arr_size);
+   
+    int *arr = (int *)malloc(arr_size * sizeof(int));
+    
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < arr_size; i++)
+    {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Given array: \n");
+    for (int i = 0; i < arr_size; i++)
+        printf("%d ", arr[i]);
+
+    quickSort(arr, 0, arr_size - 1);
+
+    printf("\nSorted array: \n");
+    for (int i = 0; i < arr_size; i++)
+        printf("%d ", arr[i]);
+   
+    free(arr);
+
+    return 0;
 }
