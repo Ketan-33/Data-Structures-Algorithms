@@ -121,6 +121,27 @@ struct Node *deleteNode(struct Node *root, int key)
     return root;
 }
 
+int findMin(struct Node *root)
+{
+    if (root == NULL)
+        return -1; // Error: Tree is empty
+
+    while (root->left != NULL)
+        root = root->left;
+
+    return root->data;
+}
+
+int findMax(struct Node *root)
+{
+    if (root == NULL)
+        return -1; // Error: Tree is empty
+
+    while (root->right != NULL)
+        root = root->right;
+
+    return root->data;
+}
 
 int main()
 {
@@ -157,5 +178,9 @@ int main()
     int keyToDelete = 30;
     root = deleteNode(root, keyToDelete);
     printf("%d deleted from the BST.\n", keyToDelete);
+
+    // Minimum and Maximum
+    printf("Minimum element: %d\n", findMin(root));
+    printf("Maximum element: %d\n", findMax(root));
     return 0;
 }
