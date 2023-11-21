@@ -70,6 +70,57 @@ void postOrderTraversal(struct Node *root)
     }
 }
 
+struct Node *minValueNode(struct Node *node)
+{
+    struct Node *current = node;
+
+    // Find the leftmost leaf node
+    while (current->left != NULL)
+        current = current->left;
+
+    return current;
+}
+
+struct Node *deleteNode(struct Node *root, int key)
+{
+    if (root == NULL)
+        return root;
+
+    // Recursive calls for deletion
+    if (key < root->data)
+        root->left = deleteNode(root->left, key);
+    else if (key > root->data)
+        root->right = deleteNode(root->right, key);
+
+    // Node with only one child or no child
+    else
+    {
+        if (root->left == NULL)
+        {
+            struct Node *temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL)
+        {
+            struct Node *temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        // Node with two children: Get the inorder successor (smallest in the right subtree)
+        struct Node *temp = minValueNode(root->right);
+
+        // Copy the inorder successor's data to this node
+        root->data = temp->data;
+
+        // Delete the inorder successor
+        root->right = deleteNode(root->right, temp->data);
+    }
+
+    return root;
+}
+
 
 int main()
 {
@@ -101,5 +152,10 @@ int main()
     printf("Post-order traversal: ");
     postOrderTraversal(root);
     printf("\n");
+
+    // Deletion
+    int keyToDelete = 30;
+    root = deleteNode(root, keyToDelete);
+    printf("%d deleted from the BST.\n", keyToDelete);
     return 0;
 }
