@@ -143,44 +143,91 @@ int findMax(struct Node *root)
     return root->data;
 }
 
+void displayMenu()
+{
+    printf("\n=== Binary Search Tree Operations ===\n");
+    printf("1. Insert\n");
+    printf("2. Search\n");
+    printf("3. In-order Traversal\n");
+    printf("4. Pre-order Traversal\n");
+    printf("5. Post-order Traversal\n");
+    printf("6. Delete\n");
+    printf("7. Find Minimum\n");
+    printf("8. Find Maximum\n");
+    printf("9. Exit\n");
+    printf("-->Enter your choice: ");
+}
+
 int main()
 {
     struct Node *root = NULL;
+    int choice, key;
 
-    // Insertion
-    root = insert(root, 50);
-    insert(root, 30);
-    insert(root, 20);
-    insert(root, 40);
-    insert(root, 70);
-    // Search
-    int keyToSearch = 40;
-    struct Node *searchResult = search(root, keyToSearch);
-    if (searchResult)
-        printf("%d found in the BST.\n", keyToSearch);
-    else
-        printf("%d not found in the BST.\n", keyToSearch);
+    do
+    {
+        displayMenu();
+        scanf("%d", &choice);
 
-    // Traversals
-    printf("In-order traversal: ");
-    inOrderTraversal(root);
-    printf("\n");
+        switch (choice)
+        {
+        case 1:
+            printf("-->Enter the key to insert: ");
+            scanf("%d", &key);
+            root = insert(root, key);
+            break;
 
-    printf("Pre-order traversal: ");
-    preOrderTraversal(root);
-    printf("\n");
+        case 2:
+            printf("-->Enter the key to search: ");
+            scanf("%d", &key);
+            struct Node *searchResult = search(root, key);
+            if (searchResult)
+                printf("-->%d found in the BST.\n", key);
+            else
+                printf("-->%d not found in the BST.\n", key);
+            break;
 
-    printf("Post-order traversal: ");
-    postOrderTraversal(root);
-    printf("\n");
+        case 3:
+            printf("-->In-order traversal: ");
+            inOrderTraversal(root);
+            printf("\n");
+            break;
 
-    // Deletion
-    int keyToDelete = 30;
-    root = deleteNode(root, keyToDelete);
-    printf("%d deleted from the BST.\n", keyToDelete);
+        case 4:
+            printf("-->Pre-order traversal: ");
+            preOrderTraversal(root);
+            printf("\n");
+            break;
 
-    // Minimum and Maximum
-    printf("Minimum element: %d\n", findMin(root));
-    printf("Maximum element: %d\n", findMax(root));
+        case 5:
+            printf("-->Post-order traversal: ");
+            postOrderTraversal(root);
+            printf("\n");
+            break;
+
+        case 6:
+            printf("-->Enter the key to delete: ");
+            scanf("%d", &key);
+            root = deleteNode(root, key);
+            printf("-->%d deleted from the BST.\n", key);
+            break;
+
+        case 7:
+            printf("-->Minimum element: %d\n", findMin(root));
+            break;
+
+        case 8:
+            printf("-->Maximum element: %d\n", findMax(root));
+            break;
+
+        case 9:
+            printf("-->Exiting the program.\n");
+            break;
+
+        default:
+            printf("-->Invalid choice. Please enter a valid option.\n");
+        }
+
+    } while (choice != 9);
+
     return 0;
 }
