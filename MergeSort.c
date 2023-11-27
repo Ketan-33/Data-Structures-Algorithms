@@ -69,21 +69,44 @@ void mergeSort(int arr[], int l, int r)
     }
 }
 
+void inputArray(int arr[], int size)
+{
+    printf("Enter %d elements for the array:\n", size);
+    for (int i = 0; i < size; i++)
+    {
+        printf("Element %d: ", i + 1);
+        scanf("%d", &arr[i]);
+    }
+}
+
+void printArray(int arr[], int size)
+{
+    printf("Array: ");
+    for (int i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
 int main()
 {
-    int arr[] = {12, 11, 13, 5, 6, 7};
-    int arr_size = sizeof(arr) / sizeof(arr[0]);
+    int arr_size;
 
-    printf("Given array: \n");
-    for (int i = 0; i < arr_size; i++)
-        printf("%d ", arr[i]);
+    printf("Enter the size of the array: ");
+    scanf("%d", &arr_size);
 
-    // Merge sort
-    mergeSort(arr, 0, arr_size - 1);
+    int arr[arr_size];
 
-    printf("\nSorted array using merge sort: \n");
-    for (int i = 0; i < arr_size; i++)
-        printf("%d ", arr[i]);
+    inputArray(arr, arr_size);
+    
+            printf("Before sorting:\n");
+            printArray(arr, arr_size);
+
+            // Merge sort
+            mergeSort(arr, 0, arr_size - 1);
+
+            printf("After sorting using merge sort:\n");
+            printArray(arr, arr_size);
+            
 
     return 0;
 }
