@@ -68,3 +68,22 @@ void mergeSort(int arr[], int l, int r)
         merge(arr, l, m, r);
     }
 }
+
+int main()
+{
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int arr_size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Given array: \n");
+    for (int i = 0; i < arr_size; i++)
+        printf("%d ", arr[i]);
+
+    // Merge sort
+    mergeSort(arr, 0, arr_size - 1);
+
+    printf("\nSorted array using merge sort: \n");
+    for (int i = 0; i < arr_size; i++)
+        printf("%d ", arr[i]);
+
+    return 0;
+}
