@@ -28,3 +28,17 @@ void addEdge(struct Graph *graph, int start, int end)
     graph->adjacencyMatrix[start][end] = 1;
     graph->adjacencyMatrix[end][start] = 1; 
 }
+
+void DFS(struct Graph *graph, int visited[MAX_VERTICES], int currentVertex)
+{
+    printf("%d ", currentVertex);
+    visited[currentVertex] = 1;
+
+    for (int i = 0; i < graph->vertices; i++)
+    {
+        if (graph->adjacencyMatrix[currentVertex][i] == 1 && !visited[i])
+        {
+            DFS(graph, visited, i);
+        }
+    }
+}
