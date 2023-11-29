@@ -74,3 +74,43 @@ void BFS(struct Graph *graph, int startVertex)
 
     printf("\n");
 }
+
+int main()
+{
+    struct Graph graph;
+    int vertices;
+
+    // Input the number of vertices
+    printf("Enter the number of vertices: ");
+    scanf("%d", &vertices);
+
+    // Initialize the graph
+    initGraph(&graph, vertices);
+
+    // Input the adjacency matrix
+    printf("Enter the adjacency matrix (1 for connected, 0 for not connected):\n");
+    for (int i = 0; i < vertices; i++)
+    {
+        for (int j = 0; j < vertices; j++)
+        {
+            printf("Is vertex %d connected to vertex %d? (1/0): ", i, j);
+            scanf("%d", &graph.adjacencyMatrix[i][j]);
+        }
+    }
+
+    // Input the starting vertex for BFS and DFS
+    int startVertex;
+    printf("Enter the starting vertex for BFS and DFS: ");
+    scanf("%d", &startVertex);
+
+    // Perform DFS traversal starting from the specified vertex
+    printf("DFS Traversal starting from vertex %d: ", startVertex);
+    int visitedDFS[MAX_VERTICES] = {0};
+    DFS(&graph, visitedDFS, startVertex);
+    printf("\n");
+
+    // Perform BFS traversal starting from the specified vertex
+    BFS(&graph, startVertex);
+
+    return 0;
+}
